@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Recepty v kategorii: {{ kategorie.nazev }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center text-success mb-4">Recepty v kategorii: {{ kategorie.nazev }}</h1>
+
+    {% if recepty %}
+    <div class="row gy-4">
+        {% for recept in recepty %}
+        <div class="col-md-6 col-lg-4">
+                <a href="{% url 'recept_detail' recept.pk %}?kategorie={{ kategorie.pk }}">
+                <div class="card h-100 shadow-sm">
+                    {% if recept.obrazek %}
+                    <img src="{{ recept.obrazek.url }}" alt="{{ recept.titul }}"
+                         class="card-img-top" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                    <img src="{% static 'img/default.png' %}" alt="Default"
+                         class="card-img-top" style="height: 200px; object-fit: cover;">
+                    {% endif %}
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ recept.titul }}</h5>
+                        <p class="card-text text-truncate">{{ recept.popis }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-center text-muted">V této kategorii nejsou žádné recepty.</p>
+    {% endif %}
+</div>
+{% endblock %}

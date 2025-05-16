@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ recept.titul }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row g-5 align-items-start">
+        <div class="col-md-5 text-center">
+            {% if recept.obrazek %}
+            <img src="{{ recept.obrazek.url }}" alt="{{ recept.titul }}"
+                 class="d-block mx-auto rounded shadow"
+                 style="width: 100%; max-width: 400px; height: 300px; object-fit: cover;">
+            {% else %}
+            <img src="{% static 'img/default.png' %}" alt="Default"
+                 class="d-block mx-auto rounded shadow"
+                 style="width: 100%; max-width: 400px; height: 300px; object-fit: cover;">
+            {% endif %}
+        </div>
+
+        <div class="col-md-7">
+            <h2 class="mb-3">{{ recept.titul }}</h2>
+
+            <p><strong>Kuchař:</strong> {{ recept.kuchar }}</p>
+
+            <p><strong>Kategorie:</strong>
+                {% for kat in recept.kategorie.all %}
+                <span class="badge bg-secondary">{{ kat.nazev }}</span>
+                {% endfor %}
+            </p>
+
+            <h5 class="mt-4">Ingredience</h5>
+            <p>{{ recept.ingredience|linebreaks }}</p>
+
+            <h5>Postup</h5>
+            <p>{{ recept.postup|linebreaks }}</p>
+
+            <!-- Navigace mezi recepty -->
+            <div class="d-flex justify-content-between flex-wrap gap-2 mt-5">
+                {% if predchozi %}
+                <a href="{% url 'recept_detail' predchozi.pk %}?kategorie={{ request.GET.kategorie }}"
+                   class="btn btn-outline-primary"
+                   style="text-decoration: none; color: inherit;">&larr; {{ predchozi.titul|truncatewords:3 }}</a>
+                {% endif %}
+
+                {% if zpet_url %}
+                <a href="{{ zpet_url }}" class="btn btn-outline-secondary"
+                   style="text-decoration: none; color: inherit;">← Zpět na kategorii</a>
+                {% endif %}
+
+                {% if dalsi %}
+                <a href="{% url 'recept_detail' dalsi.pk %}?kategorie={{ request.GET.kategorie }}"
+                   class="btn btn-outline-primary"
+                   style="text-decoration: none; color: inherit;">{{ dalsi.titul|truncatewords:3 }} &rarr;</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

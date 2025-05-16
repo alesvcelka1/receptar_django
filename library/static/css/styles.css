@@ -1,0 +1,116 @@
+/* Základní styly stránky */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Obrázky v kartách receptů */
+.card-img-top {
+    height: 220px;
+    object-fit: cover;
+}
+
+/* Titulky karet */
+.card-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* Navigační bar */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Sjednocení výšky karet a layout */
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    overflow: hidden;
+}
+
+/* Tělo karty */
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Titulek karty s odsazením od spodního textu */
+.card-title {
+    margin-bottom: auto;
+}
+
+/* Text v kartě, aby zabral zbytek místa */
+.card-text {
+    flex-grow: 1;
+}
+
+/* Tlačítko v kartě zarovnané dole vlevo */
+.card .btn {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+/* Hover efekt pro všechny karty */
+.card:hover {
+    transform: scale(1.02) !important;
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15) !important;
+    cursor: pointer !important;
+}
+
+/* Další možné přizpůsobení, např. kategorie boxy */
+.kategorie-box {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: block;
+}
+
+.kategorie-box:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    text-decoration: none;
+}
+.rounded-photo {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 40px;
+}
+
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: scale(1.02) !important;
+    box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.15) !important;
+    cursor: pointer !important;
+}
+
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    margin-bottom: auto;
+    font-weight: bold;
+}
+
+.card-text {
+    flex-grow: 1;
+}
+
+.card .btn {
+    align-self: flex-start;
+    margin-top: auto;
+}
