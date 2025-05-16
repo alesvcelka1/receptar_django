@@ -5,8 +5,7 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="text-center text-success mb-4">Recepty v kategorii: {{ kategorie.nazev }}</h1>
-
+    <h1 class="text-center mb-4" style="color: #555555;">Recepty v kategorii: {{ kategorie.nazev }}</h1>
     {% if recepty %}
     <div class="row gy-4">
         {% for recept in recepty %}
