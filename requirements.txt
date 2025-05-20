@@ -1,5 +1,0 @@
-asgiref
-Django
-Pillow
-sqlparse
-tzdata
