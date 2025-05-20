@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>{{ title }}</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Uložit</button>
+        <a href="{% url 'recepty_list' %}" class="btn btn-secondary">Zpět</a>
+    </form>
+</div>
+{% endblock %}

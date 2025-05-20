@@ -35,7 +35,11 @@
             <h5>Postup</h5>
             <p>{{ recept.postup|linebreaks }}</p>
 
-            <!-- Navigace mezi recepty -->
+            <div class="mt-4 d-flex gap-3">
+                <a href="{% url 'recept_update' recept.pk %}" class="btn btn-warning">Upravit</a>
+                <a href="{% url 'recept_delete' recept.pk %}" class="btn btn-danger">Smazat</a>
+            </div>
+
             <div class="d-flex justify-content-between flex-wrap gap-2 mt-5">
                 {% if predchozi %}
                 <a href="{% url 'recept_detail' predchozi.pk %}?kategorie={{ request.GET.kategorie }}"
@@ -58,3 +62,4 @@
     </div>
 </div>
 {% endblock %}
+

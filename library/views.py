@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Recept, Kuchar, Kategorie
 
 
+from .forms import ReceptForm
 def index(request):
     recepty = Recept.objects.all()
     return render(request, 'index.html', {'recepty': recepty})
@@ -71,3 +72,30 @@ def kuchar_detail(request, pk):
         'kuchar': kuchar,
         'recepty': recepty
     })
+def recept_create(request):
+    if request.method == 'POST':
+        form = ReceptForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('recepty_list')
+    else:
+        form = ReceptForm()
+    return render(request, 'library/recept_form.html', {'form': form, 'title': 'Přidat recept'})
+
+def recept_update(request, pk):
+    recept = get_object_or_404(Recept, pk=pk)
+    if request.method == 'POST':
+        form = ReceptForm(request.POST, request.FILES, instance=recept)
+        if form.is_valid():
+            form.save()
+            return redirect('recept_detail', pk=recept.pk)
+    else:
+        form = ReceptForm(instance=recept)
+    return render(request, 'library/recept_form.html', {'form': form, 'title': 'Upravit recept'})
+
+def recept_delete(request, pk):
+    recept = get_object_or_404(Recept, pk=pk)
+    if request.method == 'POST':
+        recept.delete()
+        return redirect('recepty_list')
+    return render(request, 'library/recept_confirm_delete.html', {'recept': recept})
