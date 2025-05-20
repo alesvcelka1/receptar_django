@@ -28,7 +28,6 @@ def recept_detail(request, pk):
     zpet_url = None
 
     if kategorie_id:
-        # Listování v rámci dané kategorie
         kategorie = get_object_or_404(Kategorie, pk=kategorie_id)
         zpet_url = f"/kategorie/{kategorie_id}/"  # Pro tlačítko zpět
 
@@ -41,7 +40,6 @@ def recept_detail(request, pk):
         if current_index < len(recept_ids) - 1:
             dalsi = Recept.objects.get(pk=recept_ids[current_index + 1])
     else:
-        # Globální listování (pokud není filtr kategorie)
         recepty = Recept.objects.all().order_by('id')
         recept_ids = list(recepty.values_list('id', flat=True))
         current_index = recept_ids.index(recept.id)

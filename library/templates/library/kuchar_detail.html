@@ -14,10 +14,8 @@
 </style>
 
 <div class="container mt-5">
-    <!-- Nadpis -->
     <h1 class="text-center mb-5">{{ kuchar.jmeno }} {{ kuchar.prijmeni }}</h1>
 
-    <!-- Flex box pro foto a bio -->
     <div class="row align-items-center mb-5">
         <div class="col-md-3 text-center mb-3 mb-md-0">
             {% if kuchar.fotografie %}
@@ -31,5 +29,32 @@
             <p>{{ kuchar.biografie }}</p>
         </div>
     </div>
+
+    <!-- bez odkazu-->
+    <hr>
+    <h4 class="mb-4">Recepty od tohoto kuchaře</h4>
+    {% if recepty %}
+    <div class="row gy-4">
+        {% for recept in recepty %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm">
+                {% if recept.obrazek %}
+                <img src="{{ recept.obrazek.url }}" alt="{{ recept.titul }}" class="card-img-top"
+                     style="height: 200px; object-fit: cover;">
+                {% else %}
+                <img src="{% static 'img/default.png' %}" alt="Default image" class="card-img-top"
+                     style="height: 200px; object-fit: cover;">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ recept.titul }}</h5>
+                    <p class="card-text text-truncate">{{ recept.popis }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-muted">Tento kuchař zatím nemá žádné recepty.</p>
+    {% endif %}
 </div>
 {% endblock %}

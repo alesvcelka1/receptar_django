@@ -9,7 +9,6 @@
     <div class="row gy-4">
         {% for kuchar in kuchari %}
         <div class="col-md-6 col-lg-4">
-            <!-- Celá karta je klikací -->
             <a href="{% url 'kuchar_detail' kuchar.pk %}" class="text-decoration-none text-dark">
                 <div class="card h-100 shadow-sm text-center">
                     {% if kuchar.fotografie %}
@@ -24,7 +23,6 @@
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ kuchar.jmeno }} {{ kuchar.prijmeni }}</h5>
                         <p class="card-text">{{ kuchar.biografie|truncatewords:20 }}</p>
-                        <!-- Můžeš přidat tlačítko detail, pokud chceš -->
                     </div>
                 </div>
             </a>

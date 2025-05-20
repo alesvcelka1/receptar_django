@@ -9,7 +9,6 @@
     <div class="row gy-4">
         {% for recept in recepty %}
         <div class="col-md-6 col-lg-4">
-            <!-- Celá karta je odkaz -->
             <a href="{% url 'recept_detail' recept.pk %}" class="text-decoration-none text-dark">
                 <div class="card h-100 shadow-sm">
                     {% if recept.obrazek %}
