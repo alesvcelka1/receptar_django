@@ -19,6 +19,6 @@ pip install -r requirements.txt - stažení závislotí
 
 python manage.py runserver - spuštění aplikace
 
-přístupové údaje do administrace
+přístupové údaje do administrace:
       admin
       admin
