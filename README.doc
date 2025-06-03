@@ -10,7 +10,8 @@ Webová aplikace pro správu kuchařů, receptů a kategorií. Umožňuje:
 
     Uživatelsky přívětivé rozhraní s využitím Bootstrapu
 
-Aktivuj virtuální prostředí
+Jak spustit?
+
 .venv\Scripts\activate - aktivace virtuálního prostředí
 
 pip install -r requirements.txt - stažení závislotí 
